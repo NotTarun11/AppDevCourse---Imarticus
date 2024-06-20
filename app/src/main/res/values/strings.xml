@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">FirstKotlin</string>
     <string name="greeting">Hello!</string>
-    <string name="nameprompt">Enter Name : </string>
-    <string name="tamil">Tamil</string>
-    <string name="english">English</string>
-    <string name="hint">Name</string>
+    <string name="hintname">Type your Name here</string>
+    <string name="hintpass">Password</string>
 </resources>
