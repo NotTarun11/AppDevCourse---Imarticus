@@ -18,30 +18,17 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val inputField = findViewById<EditText>(R.id.Name)
-        val password = findViewById<EditText>(R.id.password)
-        val submitButton = findViewById<Button>(R.id.button1)
-        var enteredName = ""
-        var pass = ""
-        submitButton.setOnClickListener {
-            enteredName = inputField.text.toString()
-            pass = password.text.toString()
-            if (enteredName == ""){
-                Toast.makeText(this@MainActivity,"Please, Enter your name",Toast.LENGTH_SHORT).show()
-            }
-            else {
-                if (pass == "1234") {
-                    val intent = Intent(this, SecondScreen::class.java)
-                    intent.putExtra("USER",enteredName)
-                    startActivity(intent)
-                }
-                else {
-                    Toast.makeText(this@MainActivity,"Incorrect Password",Toast.LENGTH_SHORT).show()
-                    password.text.clear()
-                }
-            }
+        val DialButton = findViewById<Button>(R.id.dialbutton)
+        val AlarmButton = findViewById<Button>(R.id.alarmbutton)
+
+        DialButton.setOnClickListener{
+            val intent = Intent(this,DialActivity::class.java)
+            startActivity(intent)
         }
-
-
+        AlarmButton.setOnClickListener{
+            val intent = Intent(this,AlarmActivity::class.java)
+            startActivity(intent)
+        }
     }
+
 }
