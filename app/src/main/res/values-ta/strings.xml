@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">முதல் கோட்லின்</string>
+    <string name="greeting">வணக்கம்!</string>
+    <string name="nameprompt">பெயரை உள்ளிடுக : </string>
+    <string name="tamil">தமிழ்</string>
+    <string name="english">ஆங்கிலம்</string>
+    <string name="hint">பெயர்</string>
+</resources>
