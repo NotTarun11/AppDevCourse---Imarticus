@@ -1,4 +1,5 @@
 # FirstKotlin
 First Kotlin repository
 
-Files are in the Master branch of same repository
+Day 1 - master branch
+Day 2 - Birthday branch
