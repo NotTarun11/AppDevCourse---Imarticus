@@ -14,7 +14,9 @@ import androidx.core.view.WindowInsetsCompat
 import com.examples.HomeActivity
 import com.rubiconsurge.firstkotlin.R.*
 
+
 class MainActivity : AppCompatActivity() {
+    var TAG = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
@@ -25,12 +27,50 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    override fun onStart() {
+        super.onStart()
+        Log.e(TAG,"activity is started")
+    }
+
+    //sleep night -- incomming call ur activity goes into the background for sometime
+    override fun onPause() {
+        super.onPause()
+        Log.w(TAG,"activity has paused")
+
+    }
+
+    //death of the chick -- activity no lonnger exists in the ram -- pushed to hdd[hibernate]
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG,"activity is stopped")
+
+    }
+
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.v(TAG,"activity is destroyed")
+    }
+
     fun clickHandler(view: View) {
         Log.i("MainActivity-clickhandler","button clicked")
-
+        /*  var dialIntent: Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:98765432"))  //intent= intention
+           var webIntent: Intent = Intent(Intent.ACTION_VIEW,Uri.parse("http://www.ndtv.com"))
+           startActivity(webIntent)*/
 
         var hIntent:Intent = Intent(this,HomeActivity::class.java)
         hIntent.putExtra("mykey","android-tarun")
         startActivity(hIntent)
+    }
+
+
+    fun inflateXml(){
+        var nameEditText = EditText(this)
+        nameEditText.setHint("Enter your name")
+        var pwdEditText = EditText(this)
+        pwdEditText.setHint("Enter your pass")
+        var loginButton = Button(this)
+        loginButton.setText("Login")
     }
 }
