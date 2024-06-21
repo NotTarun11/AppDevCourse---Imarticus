@@ -1,28 +1,38 @@
 package com.examples
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.rubiconsurge.firstkotlin.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.examples.MarsApi
-import com.examples.MarsApiService
-import com.rubiconsurge.firstkotlin.R.*
-import com.rubiconsurge.firstkotlin.R.id.*
+import com.examples.MarsPhoto
+import com.rubiconsurge.firstkotlin.R
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity(){
     var TAG = HomeActivity::class.java.simpleName    //"HomeActivity"
 
+    lateinit var marsRecyclerView:RecyclerView
+    lateinit var marsAdapter: MarsAdapter
+    lateinit var photos:List<MarsPhoto>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_home)
+        marsRecyclerView = findViewById(R.id.recyclerViewUrls)
+        marsRecyclerView.layoutManager = LinearLayoutManager(this)
+        photos = ArrayList()
+        marsAdapter = MarsAdapter(photos)
+        marsRecyclerView.adapter = marsAdapter
+
+        // marsAdapter = MarsAdapter(photos)
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -39,10 +49,14 @@ class HomeActivity : AppCompatActivity(){
         GlobalScope.launch {
 
             var listMarsPhotos =   MarsApi.retrofitService.getPhotos()
-//            var tvHome: TextView = findViewById(R.id.tvHome)
+            photos = listMarsPhotos
+            marsAdapter.notifyDataSetChanged()
+            //   var tvHome:TextView = findViewById(R.id.tvHome)
 //            tvHome.setText(listMarsPhotos.get(1).imgSrc)
-            Log.i("homeactivity",listMarsPhotos.size.toString())
+            Log.i("homeactiviy",listMarsPhotos.size.toString())
             Log.i("homeactivity-url",listMarsPhotos.get(1).imgSrc)
+
+
         }
     }
 
