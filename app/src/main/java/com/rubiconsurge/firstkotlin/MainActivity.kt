@@ -38,7 +38,10 @@ class MainActivity : AppCompatActivity() {
         Log.w(TAG,"activity has paused")
 
     }
-
+    override fun onResume() {
+        super.onResume()
+        Log.w(TAG,"activity has resumed")
+    }
     //death of the chick -- activity no lonnger exists in the ram -- pushed to hdd[hibernate]
     override fun onStop() {
         super.onStop()
@@ -61,6 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         var hIntent:Intent = Intent(this,HomeActivity::class.java)
         hIntent.putExtra("mykey","android-tarun")
+        throw NullPointerException("throwing null exception")
         startActivity(hIntent)
     }
 
