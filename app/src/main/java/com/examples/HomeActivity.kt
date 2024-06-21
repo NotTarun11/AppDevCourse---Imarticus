@@ -9,9 +9,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.examples.MarsApi
-import com.examples.MarsPhoto
 import com.rubiconsurge.firstkotlin.R
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -46,10 +45,11 @@ class HomeActivity : AppCompatActivity(){
 
 
     private fun getMarsPhotos() {
-        GlobalScope.launch {
-
+        GlobalScope.launch(Dispatchers.Main) {
+            //launching coroutines on the main thread is not advisable
             var listMarsPhotos =   MarsApi.retrofitService.getPhotos()
-            photos = listMarsPhotos
+            // photos = listMarsPhotos
+            marsAdapter.listMarsPhotos = listMarsPhotos
             marsAdapter.notifyDataSetChanged()
             //   var tvHome:TextView = findViewById(R.id.tvHome)
 //            tvHome.setText(listMarsPhotos.get(1).imgSrc)
