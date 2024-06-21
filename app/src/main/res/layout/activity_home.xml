@@ -24,7 +24,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="85dp"
         android:onClick="getJson"
-        android:text="Get Json"
+        android:text="get json"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

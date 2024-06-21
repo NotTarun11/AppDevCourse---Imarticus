@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -37,8 +38,10 @@ class HomeActivity : AppCompatActivity(){
     private fun getMarsPhotos() {
         GlobalScope.launch {
 
-            var jsonString =   MarsApi.retrofitService.getPhotos()
-            Log.i("homeactivity",jsonString)
+            var listMarsPhotos =   MarsApi.retrofitService.getPhotos()
+            var tvHome: TextView = findViewById(R.id.tvHome)
+            tvHome.setText(listMarsPhotos.get(1).imgSrc)
+            Log.i("homeactiviy",listMarsPhotos.size.toString())
         }
     }
 
