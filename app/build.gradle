@@ -7,7 +7,9 @@ plugins {
 android {
     namespace 'com.rubiconsurge.firstkotlin'
     compileSdk 34
-
+    buildFeatures{
+        viewBinding = true
+    }
     defaultConfig {
         applicationId "com.rubiconsurge.firstkotlin"
         minSdk 24
