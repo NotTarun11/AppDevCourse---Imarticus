@@ -11,27 +11,27 @@ public class CalculatorTest extends TestCase{
         calculator = new Calculator();
     }
 
-    public void testAdd(int a,int b){
+    public void testAdd(){
         int expected = 35;
         int actual = calculator.add(10,25);
         assertEquals(expected,actual);
     }
 
-    public void testSubtract(int a,int b){
+    public void testSubtract(){
         int expected = 15;
         int actual = calculator.subtract(40,25);
         assertEquals(expected,actual);
     }
 
-    public void testMultiply(int a,int b){
+    public void testMultiply(){
         int expected = 50;
-        int actual = calculator.add(10,5);
+        int actual = calculator.multiply(10,5);
         assertEquals(expected,actual);
     }
 
-    public void testDivide(int a,int b){
+    public void testDivide(){
         int expected = 4;
-        int actual = calculator.add(100,25);
+        int actual = calculator.divide(100,25);
         assertEquals(expected,actual);
     }
 
