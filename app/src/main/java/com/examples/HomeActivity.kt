@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.rubiconsurge.firstkotlin.databinding.ActivityHomeBinding
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {
@@ -23,6 +25,17 @@ class HomeActivity : AppCompatActivity() {
 
         binding.btnDbInsert.setOnClickListener{
             insertDataDb()
+        }
+
+        binding.btnFind.setOnClickListener{
+            findItemDb(21)
+        }
+    }
+
+    private fun findItemDb(id: Int) {
+        GlobalScope.launch(Dispatchers.Main) {
+            var item = dao.getItem(id).first()
+            binding.tvHome.setText(item.itemName)
         }
     }
 
